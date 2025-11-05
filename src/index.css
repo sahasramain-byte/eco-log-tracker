@@ -8,83 +8,83 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Eco-themed color palette */
-    --background: 40 20% 97%;
-    --foreground: 150 8% 25%;
+    /* Olive green, green, white, black color palette */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
-    --card-foreground: 150 8% 25%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 150 8% 25%;
+    --popover-foreground: 0 0% 0%;
 
-    /* Forest green primary */
-    --primary: 150 45% 42%;
+    /* Dark olive green primary */
+    --primary: 80 30% 25%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 150 45% 35%;
+    --primary-hover: 80 30% 20%;
 
-    /* Soft earth tone secondary */
-    --secondary: 35 25% 88%;
-    --secondary-foreground: 150 8% 25%;
+    /* Light olive green secondary */
+    --secondary: 80 20% 85%;
+    --secondary-foreground: 0 0% 0%;
 
-    /* Muted earth tones */
-    --muted: 40 15% 92%;
-    --muted-foreground: 150 5% 45%;
+    /* Muted olive tones */
+    --muted: 80 15% 90%;
+    --muted-foreground: 0 0% 40%;
 
-    /* Light green accent */
-    --accent: 140 50% 85%;
-    --accent-foreground: 150 8% 25%;
+    /* Green accent */
+    --accent: 120 40% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 20% 88%;
-    --input: 40 20% 88%;
-    --ring: 150 45% 42%;
+    --border: 80 15% 85%;
+    --input: 80 15% 85%;
+    --ring: 80 30% 25%;
 
     --radius: 0.75rem;
 
     /* Gradients for hero sections */
-    --gradient-eco: linear-gradient(135deg, hsl(150 45% 42%) 0%, hsl(170 40% 48%) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(40 20% 97%) 0%, hsl(140 20% 95%) 100%);
+    --gradient-eco: linear-gradient(135deg, hsl(80 30% 25%) 0%, hsl(120 40% 30%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(80 20% 95%) 100%);
 
     /* Shadows */
-    --shadow-soft: 0 2px 8px hsl(150 20% 20% / 0.08);
-    --shadow-card: 0 4px 12px hsl(150 20% 20% / 0.1);
+    --shadow-soft: 0 2px 8px hsl(0 0% 0% / 0.08);
+    --shadow-card: 0 4px 12px hsl(0 0% 0% / 0.1);
 
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 150 15% 12%;
-    --foreground: 40 20% 95%;
+    --background: 0 0% 10%;
+    --foreground: 0 0% 100%;
 
-    --card: 150 12% 16%;
-    --card-foreground: 40 20% 95%;
+    --card: 80 15% 15%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 150 12% 16%;
-    --popover-foreground: 40 20% 95%;
+    --popover: 80 15% 15%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 150 45% 50%;
-    --primary-foreground: 150 15% 12%;
-    --primary-hover: 150 45% 42%;
+    --primary: 120 40% 45%;
+    --primary-foreground: 0 0% 0%;
+    --primary-hover: 120 40% 40%;
 
-    --secondary: 150 10% 22%;
-    --secondary-foreground: 40 20% 95%;
+    --secondary: 80 20% 25%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 150 10% 22%;
-    --muted-foreground: 40 10% 65%;
+    --muted: 80 10% 20%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 150 30% 28%;
-    --accent-foreground: 40 20% 95%;
+    --accent: 80 30% 30%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 45%;
-    --destructive-foreground: 40 20% 95%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 150 10% 22%;
-    --input: 150 10% 22%;
-    --ring: 150 45% 50%;
+    --border: 80 10% 25%;
+    --input: 80 10% 25%;
+    --ring: 120 40% 45%;
 
     --shadow-soft: 0 2px 8px hsl(0 0% 0% / 0.3);
     --shadow-card: 0 4px 12px hsl(0 0% 0% / 0.4);
