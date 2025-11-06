@@ -42,20 +42,52 @@ const LogActivity = () => {
       return;
     }
 
-    // Calculate estimated CO2 (placeholder logic)
     const selectedCategory = categories.find(c => c.value === category);
-    const estimatedCO2 = (selectedCategory?.co2Factor || 0.2) * Math.random() * 10;
+    let baseFactor = selectedCategory?.co2Factor || 0.2;
+    let desc = description.toLowerCase();
+    let estimatedCO2 = 0;
 
-    // Get existing activities from localStorage
+    // 🔹 Keyword-based CO2 estimation logic
+    if (desc.includes("km")) {
+      const kmMatch = desc.match(/(\d+(\.\d+)?)\s*km/);
+      const distance = kmMatch ? parseFloat(kmMatch[1]) : 5;
+      estimatedCO2 = distance * baseFactor * 0.5; // ~0.5 kg CO2 per km
+    } 
+    else if (desc.includes("hour") || desc.includes("hr")) {
+      const hrMatch = desc.match(/(\d+(\.\d+)?)\s*(hour|hr)/);
+      const hours = hrMatch ? parseFloat(hrMatch[1]) : 1;
+      estimatedCO2 = hours * baseFactor * 1.2;
+    } 
+    else if (desc.includes("meal") || desc.includes("lunch") || desc.includes("dinner")) {
+      estimatedCO2 = baseFactor * 2;
+    }
+    else if (desc.includes("kwh") || desc.includes("electricity")) {
+      const kwhMatch = desc.match(/(\d+(\.\d+)?)\s*kwh/);
+      const kwh = kwhMatch ? parseFloat(kwhMatch[1]) : 3;
+      estimatedCO2 = kwh * baseFactor * 0.9;
+    }
+    else if (desc.includes("plastic") || desc.includes("waste")) {
+      estimatedCO2 = baseFactor * 1.5;
+    }
+    else if (desc.includes("cloth") || desc.includes("buy") || desc.includes("shopping")) {
+      estimatedCO2 = baseFactor * 3;
+    }
+    else {
+      estimatedCO2 = baseFactor * 5; // fallback estimate
+    }
+
+    estimatedCO2 = parseFloat(estimatedCO2.toFixed(2));
+
+    // Get existing activities
     const existingActivities = localStorage.getItem("ecoscan-activities");
     const activities: Activity[] = existingActivities ? JSON.parse(existingActivities) : [];
 
-    // Add new activity
+    // Add new one
     const newActivity: Activity = {
       id: Date.now().toString(),
       category,
       description,
-      co2: parseFloat(estimatedCO2.toFixed(2)),
+      co2: estimatedCO2,
       timestamp: new Date().toISOString(),
     };
 
@@ -67,11 +99,9 @@ const LogActivity = () => {
       description: `Your ${category} activity has been recorded.`,
     });
 
-    // Reset form
     setCategory("");
     setDescription("");
 
-    // Navigate to dashboard after a brief delay
     setTimeout(() => {
       navigate("/dashboard");
     }, 1500);
@@ -136,7 +166,7 @@ const LogActivity = () => {
 
       <div className="mt-8 p-4 bg-accent rounded-lg">
         <p className="text-sm text-muted-foreground text-center">
-          <strong>Note:</strong> CO₂ estimates are placeholder values. Backend integration will provide accurate calculations.
+          <strong>Note:</strong> CO₂ estimates are placeholder values based on your description. Backend integration will provide accurate calculations.
         </p>
       </div>
     </div>
